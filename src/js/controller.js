@@ -53,7 +53,6 @@ const controlSearchResults = async function () {
     await model.loadSearchResults(query);
     // 3) Render first page of results
     resultsView.render(model.getSearchResultsPage());
-    console.log(model.getSearchResultsPage());
     // 4) Render initial paginator buttons
     paginationView.render(model.state.search);
   } catch (err) {
@@ -99,7 +98,6 @@ const controlAddRecipe = async function (newRecipe) {
 
     // Upload newRecipe
     await model.uploadRecipe(newRecipe);
-    console.log(model.state.recipe);
 
     // Success message
     addRecipeView.renderSuccess();
@@ -123,10 +121,6 @@ const controlAddRecipe = async function (newRecipe) {
   }
 };
 
-const newFeature = function() {
-  console.log('Welcome to the application!');
-}
-
 const init = function () {
   bookmarksView.addHandlerRender(controlBookmarks);
 
@@ -138,8 +132,6 @@ const init = function () {
   paginationView.addHandlerClick(controlPaginator);
 
   addRecipeView.addHandlerUpload(controlAddRecipe);
-
-  newFeature();
 };
 
 init();
